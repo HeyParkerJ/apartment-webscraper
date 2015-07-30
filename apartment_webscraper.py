@@ -1,5 +1,5 @@
 import requests
-import pprint
+import csv
 from bs4 import BeautifulSoup
 
 
@@ -31,7 +31,8 @@ def scrape():
     # shit goes down right here
     results = get_card_data(cards_soup)
 
-    pprint.pprint(results)
+    out = csv.writer(open("apartment_data.csv", "a+"), delimiter=',')
+    out.writerow(results)
 
 
 def get_card_data(cards_soup):
