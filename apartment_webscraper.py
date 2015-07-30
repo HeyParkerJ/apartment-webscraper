@@ -34,34 +34,12 @@ def scrape():
     pprint.pprint(results)
 
 
-def parse_name(card):
-    # not returning data to unicode with str() would pass expensive Bs4 objects
-    return str(card.find("div", "panel-pane pane-entity-field pane-node-field-title-display inverted pos-left pos-bottom").string.strip())
-
-
-def parse_price(card):
-    # Replaces newline and $
-    return str(card.find("div", "price").contents[2].replace("\n", "").replace("$", "").strip())
-
-
-def parse_cheapest_apartment_number(card):
-    return str(card.find("div", "unit-name").contents[0])
-
-
-def parse_move_in(card):
-    return str(card.find("div", "move-in").contents[1]).strip()
-
-
-def parse_lease_lenth(card):
-    return str(card.find("div", "lease-contract").contents[1])
-
-
 def get_card_data(cards_soup):
         data_list = list()
         # for each card in our list of cards_soup, parse important info
         for card in cards_soup:
             data = {"Lowest Price": parse_price(card),
-                    "Style": parse_name(card),
+                    "Style": parse_style(card),
                     "Apartment Number": parse_cheapest_apartment_number(card),
                     "Lease Length": parse_lease_lenth(card),
                     "Move In Day": parse_move_in(card)}
@@ -69,6 +47,28 @@ def get_card_data(cards_soup):
             data_list.append(data)
 
         return data_list
+
+
+def parse_price(card):
+    # Replaces newline and $
+    return str(card.find("div", "price").contents[2].replace("\n", "").replace("$", "").strip())
+
+
+def parse_style(card):
+    # not returning data to unicode with str() would pass expensive Bs4 objects
+    return str(card.find("div", "panel-pane pane-entity-field pane-node-field-title-display inverted pos-left pos-bottom").string.strip())
+
+
+def parse_cheapest_apartment_number(card):
+    return str(card.find("div", "unit-name").contents[0])
+
+
+def parse_lease_lenth(card):
+    return str(card.find("div", "lease-contract").contents[1])
+
+
+def parse_move_in(card):
+    return str(card.find("div", "move-in").contents[1]).strip()
 
 
 if __name__ == "__main__":
