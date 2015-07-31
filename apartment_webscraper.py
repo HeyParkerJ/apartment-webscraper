@@ -1,7 +1,7 @@
 import requests
 import csv
+from datetime import date
 from bs4 import BeautifulSoup
-
 
 # our main url
 url = "https://www.camdenliving.com/tempe-az-apartments/camden-sotelo/apartments"
@@ -17,7 +17,6 @@ def scrape():
             "accept-language": "en-US,en;q=0.8"
         }
     response = requests.get(url, headers=headers)
-
     if response.status_code != 200:
         print("request denied")
         return
@@ -25,25 +24,31 @@ def scrape():
         print("scraping " + url)
 
     soup = BeautifulSoup(response.text, "lxml")
-
     cards_soup = soup.find_all("div", "available-apartment-card")
 
-    # shit goes down right here
-    results = get_card_data(cards_soup)
+    return get_card_data(cards_soup)
 
-    out = csv.writer(open("apartment_data.csv", "a+"), delimiter=',')
-    out.writerow(results)
+
+def log_data_to_csv(data):
+    # a+ appends, b opens in binary
+    with open('apartment_data.csv', 'a+b') as csvfile:
+        fieldnames = ['Price', 'Style', 'Number', 'Length', 'Move In', 'On Date']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, dialect="excel")
+
+        # Never quite figured out how to insert the header only if it doens't exist here
+        writer.writerows(data)
 
 
 def get_card_data(cards_soup):
         data_list = list()
-        # for each card in our list of cards_soup, parse important info
+        # for each card in our list of cards_soup, parse respective info
         for card in cards_soup:
-            data = {"Lowest Price": parse_price(card),
+            data = {"On Date": date.today(),
+                    "Price": parse_price(card),
                     "Style": parse_style(card),
-                    "Apartment Number": parse_cheapest_apartment_number(card),
-                    "Lease Length": parse_lease_lenth(card),
-                    "Move In Day": parse_move_in(card)}
+                    "Number": parse_cheapest_apartment_number(card),
+                    "Length": parse_lease_lenth(card),
+                    "Move In": parse_move_in(card)}
 
             data_list.append(data)
 
@@ -69,8 +74,8 @@ def parse_lease_lenth(card):
 
 
 def parse_move_in(card):
-    return str(card.find("div", "move-in").contents[1]).strip()
+    return str(card.find("div", "move-in").contents[1])
 
 
 if __name__ == "__main__":
-    scrape()
+    log_data_to_csv(scrape())

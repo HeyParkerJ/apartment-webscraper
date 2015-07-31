@@ -1,1 +1,7 @@
-"{'Lowest Price': '1419', 'Style': 'Cyan', 'Apartment Number': 'Unit D - 1028', 'Lease Length': '11 Months', 'Move In Day': 'Jul 30'}","{'Lowest Price': '1579', 'Style': 'Sable', 'Apartment Number': 'Unit A - 2008', 'Lease Length': '14 Months', 'Move In Day': 'Sep 25'}","{'Lowest Price': '1589', 'Style': 'Amber', 'Apartment Number': 'Unit F - 1047', 'Lease Length': '15 Months', 'Move In Day': 'Aug 09'}","{'Lowest Price': '1589', 'Style': 'Azure', 'Apartment Number': 'Unit C - 3018', 'Lease Length': '14 Months', 'Move In Day': 'Oct 03'}","{'Lowest Price': '1659', 'Style': 'Jade', 'Apartment Number': 'Unit D - 3027', 'Lease Length': '15 Months', 'Move In Day': 'Aug 29'}","{'Lowest Price': '2349', 'Style': 'Slate', 'Apartment Number': 'Unit D - 4026', 'Lease Length': '15 Months', 'Move In Day': 'Sep 07'}"
+Price,Style,Number,Length,Move In,Collected On
+1419,Cyan,Unit D - 1028,11 Months,30-Jul,7/30/2015
+1579,Sable,Unit A - 1008,14 Months,1-Oct,7/30/2015
+1589,Amber,Unit F - 1047,15 Months,9-Aug,7/30/2015
+1589,Azure,Unit C - 3018,14 Months,3-Oct,7/30/2015
+1659,Jade,Unit D - 3027,15 Months,29-Aug,7/30/2015
+2349,Slate,Unit D - 4026,15 Months,7-Sep,7/30/2015
