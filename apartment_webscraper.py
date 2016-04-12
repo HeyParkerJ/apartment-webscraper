@@ -2,10 +2,7 @@ import requests
 import csv
 from datetime import date
 from bs4 import BeautifulSoup
-
-# our main url
-url = "https://www.camdenliving.com/tempe-az-apartments/camden-sotelo/apartments"
-
+from config import url
 
 def scrape():
     # Not a bot
