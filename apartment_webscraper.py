@@ -28,7 +28,7 @@ def scrape():
 
 def log_data_to_csv(data):
     # a+ appends, b opens in binary and prevents extra carriage returns
-    with open('/home/parker/webscraper/apartment_data.csv', 'a+b') as csvfile:
+    with open('/home/parker/webscraper/apartment_data.csv', 'a+b') as csvfile: # try /home/parker/webscraper/apartment_data.csv' on server
         fieldnames = ['Price', 'Style', 'Number', 'Length', 'Move In', 'On Date']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames, dialect="excel")
 
