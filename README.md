@@ -8,10 +8,18 @@ My curiousity, not satisfied with a catchall explanation of supply and demand, n
 
 I rented a townhome instead.
 
-## How it works
+As a Java dev at work, this is my first time writing in Python.
 
-As a Java dev at work, this is my first time ever writing in Python. I opted to use Python 2.7 and BeautifulSoup4, learning both from scratch. BS4 grabs the DOM and extracts the values of the apartments that get loaded into said DOM on our initial HTTP Get.
 
-The script currently runs with a cron job on a VPS that I obtained and secured, learning a bit of administrative work on the way.
+### How to run
+
+You can't. For saftey reasons, I don't commit the website url anymore. But if you were me, you'd...
+
+Assuming fresh vm, pip install the following
+
+- `Beautifulsoup4`
+- `lxml`
+
+The script currently runs with a cron job on a VPS that I obtained and secured, learning a bit of administrative work on the way. For a single run, `python apartment_webscraper.py`
 
 apartment_data.csv (if I wrote it again, we'd have a database) shows a small window of the extracted data for some manual excel formatting.
